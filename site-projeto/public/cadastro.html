@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Room</title>
+    <link rel="stylesheet" href="styleCadastro.css">
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap">
+</head>
+
+<body>
+    <header>
+        <img src="assets/logo.png" alt="Logo Save Room" id="logoSR">
+        <nav>
+            <a href="index.html" class="navLink">HOME</a>
+            <a href="index.html#sobreMim" class="navLink">SOBRE</a>
+            <a href="#" class="navLink">CONEXÕES</a>
+            <a href="#" class="navLink">SEU TIPO</a>
+            <a href="#" class="navLink">FERRAMENTAS</a>
+            <a href="login.html" id="loginButton"><b>LOGIN →</b></a>
+        </nav>
+    </header>
+    <main>
+        <section id="login">
+            <div id="img" role="img" aria-label="Ilustração do Save Room"></div>
+
+            <div id="form">
+                <h1>Cadastro</h1>
+                <p>Crie sua conta e comece a usar as ferramentas do Save Room.</p>
+
+                <form>
+                    <div class="campo">
+                        <span class="material-symbols-outlined">person</span>
+                        <input type="text" name="nickname" id="inickname" placeholder="Seu nickname"
+                            autocomplete="nickname" required minlength="3" maxlength="20">
+                    </div>
+
+                    <div class="campo">
+                        <span class="material-symbols-outlined">mail</span>
+                        <input type="email" name="mail" id="imail" placeholder="Seu e-mail" autocomplete="email"
+                            required maxlength="30">
+                    </div>
+
+                    <div class="campo">
+                        <span class="material-symbols-outlined">vpn_key</span>
+                        <input type="password" name="senha" id="isenha" placeholder="Sua senha"
+                            autocomplete="new-password" required minlength="8" maxlength="20">
+                        <button type="button" onclick="verSenha()" id="botaoVerSenha"
+                            aria-label="Mostrar ou ocultar a senha">VER</button>
+                    </div>
+
+                    <div class="campo">
+                        <span class="material-symbols-outlined">lock</span>
+                        <input type="password" name="confirmarSenha" id="iconfirmar" placeholder="Confirme sua senha"
+                            autocomplete="new-password" required minlength="8" maxlength="20">
+                        <button type="button" onclick="verSenha2()" id="botaoVerConfirmar"
+                            aria-label="Mostrar ou ocultar a confirmação da senha">VER</button>
+                    </div>
+
+                    <button type="button" onclick="cadastrar()" id="entrar">Cadastrar</button>
+
+                    <p class="cadastro">
+                        Já possui uma conta? <a href="login.html">Faça login</a>
+                    </p>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Site criado por <a href="https://github.com/casarinigreg" target="_blank">Gregory Casarini</a></p>
+    </footer>
+</body>
+
+</html>
+<script>
+    function verSenha() {
+        if (isenha.type == 'password') {
+            isenha.type = 'text';
+            btn_ver.innerHTML = 'OCULTAR';
+        } else {
+            isenha.type = 'password';
+            btn_ver.innerHTML = 'VER';
+        }
+
+    }
+
+    function verSenha2() {
+        if (iconfirmar.type == 'password') {
+            iconfirmar.type = 'text';
+            btn_ver.innerHTML = 'OCULTAR';
+        } else {
+            iconfirmar.type = 'password';
+            btn_ver.innerHTML = 'VER';
+        }
+    }
+</script>
