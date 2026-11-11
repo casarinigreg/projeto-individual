@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Room</title>
+    <link rel="stylesheet" href="styleLogin.css">
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <img src="assets/logo.png" alt="Logo Save Room" id="logoSR">
+        <nav>
+            <a href="#" class="navLink">HOME</a>
+            <a href="#sobreMim" class="navLink">SOBRE</a>
+            <a href="#" class="navLink">SEU TIPO</a>
+            <a href="#" class="navLink">CONEXÕES</a>
+            <a href="#" class="navLink">FERRAMENTAS</a>
+            <a href="#" id="loginButton"><b>LOGIN →</b></a>
+        </nav>
+    </header>
+            <main>
+                <section id="login">
+            <div id="img">
+                <!-- imagem no css -->
+            </div>
+            <div id="form">
+                <h1>login</h1>
+                <p>Seja bem vindo novamente, faça login para acessar sua conta!</p>
+                <form action="login.php" method="post" autocomplete="on">
+                    <div class="campo">
+                        <span class="material-symbols-outlined">person</span>
+                        <input type="email" name="mail" id="imail" placeholder="seu email" autocomplete="email" required maxlength="30">
+                        <label for="ilogin"></label>
+                    </div>
+                    <div class="campo">                        
+                        <span class="material-symbols-outlined">vpn_key</span>
+                        <input type="password" name="senha" id="isenha" placeholder="sua senha" autocomplete="current-password" required minlength="8" maxlength="20">
+                        <label for="isenha"></label>
+                    </div>
+                    <input type="submit" value="Entrar">
+                    <a href="esqueci.html" class="botao">Esqueci a senha <span class="material-symbols-outlined">mail</span></a>
+                </form>
+            </div>
+        </section>
+            </main>
+    <footer>
+        <p>Site criado por <a href="https://github.com/casarinigreg" target="_blank">Gregory Casarini</a></p>
+    </footer>
+</body>
+
+</html>
