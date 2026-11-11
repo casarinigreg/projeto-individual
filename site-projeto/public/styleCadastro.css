@@ -34,7 +34,7 @@ header {
     display: flex;
     align-items: center;
     background-color: #000;
-    height: 80px;
+    min-height: 80px;
     padding: 0 40px;
     position: sticky;
     top: 0;
@@ -195,15 +195,6 @@ button#entrar {
     font-weight: 700;
     cursor: pointer;
     transition: 0.4s;
-}
-
-.cadastro a {
-    color: black;
-    font-weight: bold;
-}
-
-.cadastro a:hover {
-    text-decoration: underline;
 }
 
 button#entrar:hover {

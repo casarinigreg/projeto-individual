@@ -18,10 +18,9 @@
         <nav>
             <a href="index.html" class="navLink">HOME</a>
             <a href="index.html#sobreMim" class="navLink">SOBRE</a>
-            <a href="#" class="navLink">CONEXÕES</a>
+            <a href="conexoes.html" class="navLink">CONEXÕES</a>
             <a href="#" class="navLink">SEU TIPO</a>
             <a href="#" class="navLink">FERRAMENTAS</a>
-            <a href="login.html" id="loginButton"><b>LOGIN →</b></a>
         </nav>
     </header>
     <main>
@@ -39,37 +38,46 @@
                 <form>
                     <div class="campo">
                         <span class="material-symbols-outlined">person</span>
-                        <input type="text" name="nickname" id="inickname" placeholder="Seu nickname"
+                        <input type="text" name="nickname" id="icliente" placeholder="Seu nickname"
                             autocomplete="nickname" required minlength="3" maxlength="20">
-                    </div>
+                        </div>
+                        <div class="login-msg" id="div_result_cliente"></div>
 
                     <div class="campo">
                         <span class="material-symbols-outlined">mail</span>
                         <input type="email" name="mail" id="imail" placeholder="Seu e-mail" autocomplete="email"
                             required maxlength="30">
-                    </div>
+                        </div>
+                        <div class="login-msg" id="div_result_mail"></div>
 
                     <div class="campo">
+
                         <span class="material-symbols-outlined">vpn_key</span>
+
                         <input type="password" name="senha" id="isenha" placeholder="Sua senha"
                             autocomplete="new-password" required minlength="8" maxlength="20">
+
                         <button type="button" onclick="verSenha()" id="botaoVerSenha"
                             aria-label="Mostrar ou ocultar a senha">VER</button>
+
                     </div>
+                    <div class="login-msg" id="div_result_senha"></div>
 
                     <div class="campo">
                         <span class="material-symbols-outlined">lock</span>
-                        <input type="password" name="confirmarSenha" id="iconfirmar" placeholder="Confirme sua senha"
+
+                        <input type="password" name="confirmarSenha" id="iconfirmacao" placeholder="Confirme sua senha"
                             autocomplete="new-password" required minlength="8" maxlength="20">
+
                         <button type="button" onclick="verSenha2()" id="botaoVerConfirmar"
                             aria-label="Mostrar ou ocultar a confirmação da senha">VER</button>
-                    </div>
 
-                    <button type="button" onclick="cadastrar()" id="entrar">Cadastrar</button>
+                            
+                        </div>
+                        <div class="login-msg" id="div_result_confirmacao_senha"></div>
 
-                    <p class="cadastro">
-                        Já possui uma conta? <a href="login.html">Faça login</a>
-                    </p>
+                    <button type="button" onclick="registrar()" id="entrar">Cadastrar</button>
+
                 </form>
             </div>
         </section>
@@ -81,6 +89,84 @@
 
 </html>
 <script>
+    function registrar() {
+    let cliente = icliente.value;
+    let email = imail.value;
+    let flagError = false;
+
+
+
+    if (cliente.trim() == '') {
+        div_result_cliente.innerHTML = `Informe o seu nickname`;
+        flagError = true;
+    } else {
+        div_result_cliente.innerHTML = ``;
+    }
+
+    if (email.includes('@') && email.includes('.com')) {
+        div_result_mail.innerHTML = ``;
+    } else {
+        div_result_mail.innerHTML = `E-mail deve conter @ e .com`;
+        flagError = true;
+    }
+
+
+    // VALIDAÇÃO DA SENHA
+    let senha = isenha.value;
+    let tamanhoSenha = senha.length;
+    let temMaiuscula = senha !== senha.toUpperCase();
+    let temMinuscula = senha !== senha.toLowerCase();
+    let validacaoSenha = iconfirmacao.value;
+
+    let contador = 0;
+    let contSimbolos = 0;
+    let simbolos = '!@#$%&*()_+-=[]{};:,.<>?/|~';
+
+    while (contador < senha.length) {
+        if (simbolos.includes(senha[contador])) {
+            contSimbolos++;
+        }
+        contador++;
+    }
+
+    if (tamanhoSenha == 0) {
+        div_result_senha.innerHTML = `Informe uma senha`;
+        flagError = true;
+    } else if (tamanhoSenha < 8) {
+        div_result_senha.innerHTML = `A senha deve ter pelo menos 8 caracteres`;
+        flagError = true;
+    } else if (!temMaiuscula) {
+        div_result_senha.innerHTML = `A senha deve conter pelo menos uma letra maiúscula`;
+        flagError = true;
+    } else if (!temMinuscula) {
+        div_result_senha.innerHTML = `A senha deve conter pelo menos uma letra minúscula`;
+        flagError = true;
+    } else if (contSimbolos == 0) {
+        div_result_senha.innerHTML = `A senha deve conter pelo menos um caractere especial`;
+        flagError = true;
+    } else {
+        div_result_senha.innerHTML = ``;
+    }
+
+    // VALIDAÇÃO DA CONFIRMAÇÃO DA SENHA
+    if (validacaoSenha == '') {
+        div_result_confirmacao_senha.innerHTML = `Confirme sua senha`;
+        flagError = true;
+    } else if (senha != validacaoSenha) {
+        div_result_confirmacao_senha.innerHTML = `As senhas não conferem`;
+        flagError = true;
+    } else {
+        div_result_confirmacao_senha.innerHTML = ``;
+    }
+
+    if (flagError) {
+        return;
+    }
+
+    cadastrar();
+}
+
+
     function verSenha() {
         if (isenha.type == 'password') {
             isenha.type = 'text';
@@ -101,4 +187,54 @@
             btn_ver.innerHTML = 'VER';
         }
     }
+
+    // Array para armazenar empresas cadastradas para validação de código de ativação
+let listaEmpresasCadastradas = [];
+
+function cadastrar() {
+    var nomeVar = icliente.value;
+    var emailVar = imail.value;
+    var senhaVar = isenha.value;
+    var confirmacaoSenhaVar = iconfirmacao.value;
+
+    if (
+        nomeVar == "" ||
+        emailVar == "" ||
+        senhaVar == "" ||
+        confirmacaoSenhaVar == ""
+    ) {
+        mostrarPopup('Você precisa preencher todos os campos!');
+        return false;
+    }
+
+    fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            nomeServer: nomeVar,
+            emailServer: emailVar,
+            senhaServer: senhaVar,
+            cpfServer: cpfVar
+        }),
+    })
+    .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+            setTimeout(() => {
+                window.location = "../login.html";
+            }, 1000);
+        } else {
+            throw new Error("Houve um erro ao tentar realizar o cadastro!");
+        }
+    })
+    .catch(function (erro) {
+        mostrarPopup("Houve um erro ao tentar realizar o cadastro!");
+        console.log(`#ERRO: ${erro}`);
+    });
+
+    return false;
+}
 </script>
