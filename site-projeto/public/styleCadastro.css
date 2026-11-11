@@ -228,6 +228,44 @@ button#entrar:hover {
     font-size: 18px;
 }
 
+/* ABAS LOGIN | CADASTRO */
+
+#form {
+    position: relative;
+    padding-top: 80px;
+}
+
+.abas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+}
+
+.aba {
+    flex: 1;
+    padding: 18px 0;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #000;
+    background: rgba(255, 255, 255, 0.35);
+    transition: 0.2s;
+}
+
+.aba:hover {
+    background: rgba(255, 255, 255, 0.65);
+}
+
+.aba.ativa {
+    background: #000;
+    color: #fff;
+    cursor: default;
+}
+
 /* FOOTER */
 
 footer {
