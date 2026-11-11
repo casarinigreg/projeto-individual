@@ -8,8 +8,7 @@ html, body {
 }
 
 body {
-    min-height: 100vh;           /* era height: 100% */
-    display: flex;               /* novo */
+    min-height: 100vh;           
     flex-direction: column;
 
     background-color: gray;
@@ -87,7 +86,7 @@ nav {
 /* MAIN */
 
 main {
-    flex: 1;                     /* ocupa todo o espaço entre header e footer */
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
