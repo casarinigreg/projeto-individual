@@ -19,7 +19,7 @@
             <a href="index.html" class="navLink">HOME</a>
             <a href="index.html#sobreMim" class="navLink">SOBRE</a>
             <a href="conexoes.html" class="navLink">CONEXÕES</a>
-            <a href="#" class="navLink">FERRAMENTAS</a>
+            <a href="ferramentas.html" class="navLink">FERRAMENTAS</a>
         </nav>
     </header>
     <main>
@@ -49,7 +49,7 @@
                             aria-label="Mostrar ou ocultar a senha">VER</button>
                     </div>
 
-                    <button type="button" onclick="entrar()" id="entrar">Entrar</button>
+                    <button type="button" onclick="entrar()" id="entrarButton">Entrar</button>
                 </form>
             </div>
         </section>
@@ -109,7 +109,7 @@ function entrar() {
                 sessionStorage.NOME_CLIENTE = json.nome;
 
                 setTimeout(function () {
-                    window.location = "./seuTipo.html";
+                    window.location = "./ferramentas.html";
                 }, 1000); // apenas para exibir o loading
 
             });

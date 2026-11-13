@@ -19,7 +19,7 @@
             <a href="index.html" class="navLink">HOME</a>
             <a href="index.html#sobreMim" class="navLink">SOBRE</a>
             <a href="conexoes.html" class="navLink">CONEXÕES</a>
-            <a href="#" class="navLink">FERRAMENTAS</a>
+            <a href="ferramentas.html" class="navLink">FERRAMENTAS</a>
         </nav>
     </header>
     <main>
@@ -48,6 +48,13 @@
                             required maxlength="30">
                         </div>
                         <div class="login-msg" id="div_result_mail"></div>
+
+                    <div class="campo">
+                        <span class="material-symbols-outlined">id_card</span>
+                        <input type="text" name="cpf" id="icpf" placeholder="Seu CPF" autocomplete="cpf"
+                            required maxlength="14">
+                        </div>
+                        <div class="login-msg" id="div_result_cpf"></div>
 
                     <div class="campo">
 
@@ -90,6 +97,7 @@
 <script>
     function registrar() {
     let cliente = icliente.value;
+    let cpf = icpf.value;
     let email = imail.value;
     let flagError = false;
 
@@ -100,6 +108,13 @@
         flagError = true;
     } else {
         div_result_cliente.innerHTML = ``;
+    }
+
+    if (cpf.length != 11 || cpf.includes("-") || cpf.includes(".")) {
+        div_result_cpf.innerHTML = `CPF deve ter 11 caracteres`;
+        flagError = true;
+    } else {
+        div_result_cpf.innerHTML = ``;
     }
 
     if (email.includes('@') && email.includes('.com')) {
@@ -192,12 +207,14 @@
 function cadastrar() {
     var nomeVar = icliente.value;
     var emailVar = imail.value;
+    var cpfVar = icpf.value;
     var senhaVar = isenha.value;
     var confirmacaoSenhaVar = iconfirmacao.value;
 
     if (
         nomeVar == "" ||
         emailVar == "" ||
+        cpfVar == "" ||
         senhaVar == "" ||
         confirmacaoSenhaVar == ""
     ) {
@@ -213,8 +230,8 @@ function cadastrar() {
         body: JSON.stringify({
             nomeServer: nomeVar,
             emailServer: emailVar,
+            cpfServer: cpfVar,
             senhaServer: senhaVar,
-            cpfServer: cpfVar
         }),
     })
     .then(function (resposta) {

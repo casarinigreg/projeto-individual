@@ -186,7 +186,7 @@ form {
 }
 
 
-button#entrar {
+button#entrarButton {
     background-color: #000;
     color: #fff;
     border: 2px solid #000;
@@ -199,7 +199,7 @@ button#entrar {
 }
 
 
-button#entrar:hover {
+button#entrarButton:hover {
     background-color: transparent;
     color: #000;
 }
