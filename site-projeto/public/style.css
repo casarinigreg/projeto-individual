@@ -87,7 +87,7 @@ nav {
 main {
     background-color: rgba(210, 210, 210, 0.79);
     min-width: 320px;
-    max-width: 1100px;
+    max-width: 1220px;
     padding: 1px 15px 2px;
     margin: auto;
     margin-bottom: 30px;
@@ -134,53 +134,72 @@ footer a {
     text-decoration: none;
 }
 
-/* === Ferramentas page: side-bar à esquerda ===
-   Regras específicas aplicadas apenas quando o <main> tiver a classe .ferramentas-main
-*/
-
-.ferramentas-main {
-    display: flex;
-    flex-direction: column;
-    width: 900px;
-}
-.ferramentas-main .tools-page {
+.tools-page {
     display: flex;
     gap: 24px;
     align-items: flex-start;
 }
 
-.ferramentas-main .sidebar {
+.sidebar {
     width: 190px;
     min-width: 150px;
     background-color: rgba(0, 0, 0, 0.736);
     color: #fff;
     padding: 16px;
-    /* Arredondar somente as bordas direitas para ficar colada ao canto esquerdo */
     border-radius: 0 8px 8px 0;
     box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    /* Fixar a sidebar na viewport, colada ao canto esquerdo */
     position: fixed;
     left: 0;
-    top: 80px; /* corresponde ao header (min-height: 80px) */
+    top: 80px;
     height: calc(100vh - 80px);
-    z-index: 999; /* abaixo do header (1000) */
+    z-index: 999;
     overflow: auto;
 }
 
-.ferramentas-main .sidebar h3 {
+.sidebar h3 {
     margin: 0 0 8px 0;
     font-size: 16px;
     font-weight: 800;
 }
 
-.ferramentas-main .sidebar-list {
+ .sidebar-list {
     list-style: none;
     padding: 0;
     margin: 8px 0 0 0;
 }
 
-.ferramentas-main .sidebar-list li {
+.sidebar-list li {
     margin-bottom: 8px;
+}
+
+.sidebar-account {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #ffffff;
+  font-size: 12px;
+}
+
+.sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+.sidebar-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fdfdfd;
+  color: black;
+  font-weight: 800;
+  text-align: center;
+  line-height: 36px;
+}
+
+.sidebar-account>a {
+  color: #fdfdfd;
 }
 
 .tool-link {
@@ -203,33 +222,8 @@ footer a {
     min-width: 300px;
 }
 
-/* Responsivo: em telas pequenas a sidebar fica acima do conteúdo */
-@media (max-width: 800px) {
-    .ferramentas-main .tools-page {
-        flex-direction: column;
-    }
-    .ferramentas-main .sidebar {
-        position: relative;
-        top: 0;
-        left: auto;
-        width: 100%;
-        height: auto;
-        border-radius: 8px;
-    }
-    /* remover padding adicionado para versão com sidebar fixa e centralizar o main */
-    .ferramentas-main {
-        padding-left: 15px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
-/* Quando a sidebar estiver fixa na viewport, empurra o conteúdo principal para a direita
-   sem afetar outras páginas */
 .ferramentas-main {
-    /* manter os outros paddings do main e deslocar o main para a direita
-       para não ficar sob a sidebar fixa */
-    /* deixa um pequeno espaçamento interno e empurra o elemento main para a direita */
+
     padding-left: 15px;
     margin-left: calc(220px + 15px);
     margin-right: 15px;

@@ -1,5 +1,4 @@
-
-// sessão
+﻿// sessão
 function validarSessao() {
     let email = sessionStorage.EMAIL_USUARIO;
     let nome = sessionStorage.NOME_CLIENTE;
