@@ -6,6 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Save Room</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Mantém o footer no final da tela usando layout flex nessa página */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main.ferramentas-main {
+            flex: 1 0 auto;
+            margin-top: 0; /* evita centralização vertical causada por `margin: auto` em main */
+            margin-bottom: 30px; /* mantém espaçamento visual existente */
+        }
+
+        footer {
+            /* garante que o footer fique no final quando o conteúdo for insuficiente */
+            margin-top: 0;
+        }
+    </style>
     <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
 
 </head>
@@ -26,8 +45,9 @@
             <aside class="sidebar" aria-label="Navegação de ferramentas">
                 <h3>Ferramentas</h3>
                 <ul class="sidebar-list">
+                    <li><a href="#" class="tool-link">Seu tipo</a></li>
                     <li><a href="#" class="tool-link">Montador de times Pokémon</a></li>
-                    <li><a href="#" class="tool-link">Guia de canções (Zelda)</a></li>
+                    <li><a href="zelda.html" class="tool-link">Guia de canções (Zelda)</a></li>
                     
                 </ul>
             </aside>
