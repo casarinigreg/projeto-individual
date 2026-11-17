@@ -1,0 +1,383 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'MinhaFonteGotica';
+    src: url('assets/dystopian-canticle.regular.otf') format('truetype');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700;800&display=swap');
+
+
+
+html,
+body {
+    min-height: 100vh;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: gray;
+    background-image: url(assets/Fundo.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+    
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-family: 'MinhaFonteGotica', sans-serif;
+    font-size: 4.5em;
+}
+
+h2 {
+    font-family: 'MinhaFonteGotica', sans-serif;
+    font-size: 3.5em;
+}
+
+/* NAVEGAÇÃO */
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: #000;
+    min-height: 80px;
+    padding: 0 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+#logoSR {
+    height: 55px;
+}
+
+nav {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 40px;
+
+}
+
+.navLink {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.navLink:hover {
+    font-weight: 900;
+}
+
+#loginButton {
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 2px solid white;
+    transition: 0.5s;
+}
+
+#loginButton:hover {
+    color: #000000;
+    background-color: #ffffff;
+}
+
+/* MAIN */
+
+
+main {
+    background-color: rgba(210, 210, 210, 0.79);
+    min-width: 320px;
+    max-width: 1220px;
+    padding: 1px 15px 2px;
+    margin: auto;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.644);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+article {
+    padding: 30px;
+}
+
+#sobreMim {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+#sobreMim p {
+    flex: 1;
+    min-width: 220px;
+}
+
+/* CONEXÕES: imagens lado a lado */
+.conexoes {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 10px;
+}
+.conexoes img {
+    width: 200px;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+.conexoes img:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s;
+}
+
+/* FOOTER */
+
+footer {
+    font-size: 0.8em;
+    padding: 5px;
+    margin: 0px 0px 0px;
+    color: white;
+    background-color: rgb(0, 0, 0);
+}
+
+footer>p {
+    text-align: center;
+    margin: 0px 0px 0px;
+    padding: 1px 1px 1px;
+}
+
+footer a {
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.tools-page {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.sidebar {
+    width: 190px;
+    min-width: 150px;
+    background-color: rgba(0, 0, 0, 0.736);
+    color: #fff;
+    padding: 16px;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    left: 0;
+    top: 80px;
+    height: calc(100vh - 80px);
+    z-index: 999;
+    overflow: auto;
+}
+
+.sidebar h3 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.sidebar-list {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0 0;
+}
+
+.sidebar-list li {
+    margin-bottom: 8px;
+}
+
+.sidebar-account {
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid #ffffff;
+    font-size: 12px;
+}
+
+.sidebar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    font-weight: 700;
+}
+
+.sidebar-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #fdfdfd;
+    color: black;
+    font-weight: 800;
+    text-align: center;
+    line-height: 36px;
+}
+
+.sidebar-account>a {
+    color: #fdfdfd;
+}
+
+.tool-link {
+    color: #ffffff;
+    display: block;
+    padding: 8px 10px;
+    border-radius: 6px;
+    transition: background 0.18s, transform 0.12s;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.tool-link:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateX(3px);
+}
+
+.ferramentas-main .tools-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.ferramentas-main {
+
+    padding-left: 15px;
+    margin-left: calc(220px + 15px);
+    margin-right: 15px;
+    margin-bottom: 30px;
+    margin-top: 0; 
+    flex: 1 0 auto;
+}
+
+.ferramentas-main .tools-content {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pokedex-wrapper {
+    margin: 40px auto;
+    position: relative;
+    width: 100%;
+    max-width: 310px;
+}
+
+.pokedex {
+    display: block;
+    width: 100%;
+}
+
+.pokemon__data {
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    color: #aaa;
+    top: 54.5%;
+    right: 27%;
+    margin: 0;
+    font-size: clamp(8px, 5vw, 25px);
+    font-family: 'Oxanium', cursive;
+}
+
+
+.pokedex {
+  width: 100%;
+  max-width: 425px;
+}
+
+.pokemon__image {
+  position: absolute;
+  bottom: 55%;
+  left: 50%;
+  transform: translate(-63%, 20%);
+  height: 18%;
+}
+
+.pokemon__data {
+  position: absolute;
+  font-weight: 600;
+  color: #aaa;
+  top: 54.5%;
+  right: 27%;
+  font-size: clamp(8px, 5vw, 25px);
+}
+
+.pokemon__name {
+  color: #3a444d;
+  text-transform: capitalize;
+}
+
+.form {
+  position: absolute;
+  width: 65%;
+  top: 65%;
+  left: 13.5%;
+}
+
+.input__search {
+  width: 100%;
+  padding: 4%;
+  outline: none;
+  border: 2px solid #333;
+  border-radius: 5px;
+  font-weight: 600;
+  color: #3a444d;
+  font-size: clamp(8px, 5vw, 1rem);
+  box-shadow: -3px 4px 0 #888, -5px 7px 0 #333
+}
+
+.buttons {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  width: 65%;
+  transform: translate(-57%, 0);
+  display: flex;
+  gap: 20px;
+}
+
+.button {
+  width: 50%;
+  padding: 4%;
+  border: 2px solid #000;
+  border-radius: 5px;
+  font-size: clamp(8px, 5vw, 1rem);
+  font-weight: 600;
+  color: white;
+  background-color: #444;
+  box-shadow: -2px 3px 0 #222, -4px 6px 0 #000;
+}
+
+.button:active {
+  box-shadow: inset -4px 4px 0 #222;
+  font-size: 0.9rem;
+}
+
+

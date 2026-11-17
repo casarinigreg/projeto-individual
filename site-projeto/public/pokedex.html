@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Room</title>
+    <link rel="stylesheet" href="style.css">    
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="stylePokedex.css">
+
+</head>
+<body onload="validarSessao()">
+    <header>
+        <img src="assets/logo.png" alt="Logo Save Room" id="logoSR">
+        <nav>
+            <a href="index.html" class="navLink">HOME</a>
+            <a href="index.html#sobreMim" class="navLink">SOBRE</a>
+            <a href="conexoes.html" class="navLink">CONEXÕES</a>
+            <a href="ferramentas.html" class="navLink">FERRAMENTAS</a>
+            <a href="login.html" id="loginButton"><b>LOGIN →</b></a>
+        </nav>
+    </header>
+    <main class="ferramentas-main">
+        <div class="tools-page">
+            <aside class="sidebar" aria-label="Navegação de ferramentas">
+                <h3>Ferramentas</h3>
+                <ul class="sidebar-list">
+                    <li><a href="#" class="tool-link">Seu tipo</a></li>
+                    <li><a href="#" class="tool-link">Pokedex</a></li>
+                    <li><a href="zelda.html" class="tool-link">Guia de canções (Zelda)</a></li>
+                    
+                </ul>
+            </aside>
+
+            <section class="tools-content">
+    <div class="pokedex-wrapper">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/2.gif" alt="pokemon" class="pokemon__image">
+
+        <h1 class="pokemon__data">
+            <span class="pokemon__number"></span> -
+            <span class="pokemon__name"></span>
+        </h1>
+
+        <form class="form">
+            <input
+                type="search"
+                class="input__search"
+                placeholder="Name or Number"
+                required
+            />
+        </form>
+
+        <div class="buttons">
+            <button class="button btn-prev">Prev &lt;</button>
+            <button class="button btn-next">Next &gt;</button>
+        </div>
+
+        <img src="assets/assets-pokedex/pokedex.png" alt="pokedex" class="pokedex">
+    </div>
+</section>
+        </div>
+    </main>
+    <footer>
+        <p>Site criado por <a href="https://github.com/casarinigreg" target="_blank">Gregory Casarini</a></p>
+    </footer>
+    <script src="sessao.js"></script>
+</body>
+
+</html>
+<script>
+    const pokemonName = document.querySelector('.pokemon__name');
+const pokemonNumber = document.querySelector('.pokemon__number');
+const pokemonImage = document.querySelector('.pokemon__image');
+
+const form = document.querySelector('.form');
+const input = document.querySelector('.input__search');
+const buttonPrev = document.querySelector('.btn-prev');
+const buttonNext = document.querySelector('.btn-next');
+
+let searchPokemon = 1;
+
+const fetchPokemon = async (pokemon) => {
+  const APIResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+
+  if (APIResponse.status === 200) {
+    const data = await APIResponse.json();
+    return data;
+  }
+}
+
+const renderPokemon = async (pokemon) => {
+
+  pokemonName.innerHTML = 'Loading...';
+  pokemonNumber.innerHTML = '';
+
+  const data = await fetchPokemon(pokemon);
+
+  if (data) {
+    pokemonImage.style.display = 'block';
+    pokemonName.innerHTML = data.name;
+    pokemonNumber.innerHTML = data.id;
+    pokemonImage.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default'];
+    input.value = '';
+    searchPokemon = data.id;
+  } else {
+    pokemonImage.style.display = 'none';
+    pokemonName.innerHTML = 'Not found :c';
+    pokemonNumber.innerHTML = '';
+  }
+}
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  renderPokemon(input.value.toLowerCase());
+});
+
+buttonPrev.addEventListener('click', () => {
+  if (searchPokemon > 1) {
+    searchPokemon -= 1;
+    renderPokemon(searchPokemon);
+  }
+});
+
+buttonNext.addEventListener('click', () => {
+  searchPokemon += 1;
+  renderPokemon(searchPokemon);
+});
+
+renderPokemon(searchPokemon);
+</script>
