@@ -1,8 +1,14 @@
 @charset "UTF-8";
 
+@font-face {
+    font-family: 'MinhaFonteGotica';
+    src: url('assets/dystopian-canticle.regular.otf') format('truetype');
+}
+
+
 html,
 body {
-    min-height: 100%;
+    min-height: 100vh;
     margin: 0px;
     font-family: Arial, Helvetica, sans-serif;
     scroll-behavior: smooth;
@@ -15,6 +21,9 @@ body {
     background-position: center center;
     background-size: cover;
     background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
     
 }
 
@@ -23,7 +32,13 @@ a {
 }
 
 h1 {
-    font-weight: bolder;
+    font-family: 'MinhaFonteGotica', sans-serif;
+    font-size: 4.5em;
+}
+
+h2 {
+    font-family: 'MinhaFonteGotica', sans-serif;
+    font-size: 3.5em;
 }
 
 /* NAVEGAÇÃO */
@@ -112,6 +127,28 @@ article {
 #sobreMim p {
     flex: 1;
     min-width: 220px;
+}
+
+/* CONEXÕES: imagens lado a lado */
+.conexoes {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 10px;
+}
+.conexoes img {
+    width: 200px;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+.conexoes img:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s;
 }
 
 /* FOOTER */

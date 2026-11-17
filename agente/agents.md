@@ -66,5 +66,3 @@ Consequência para as decisões de design e de funcionalidade: priorizar o CSS j
 6. **Código simples e legível**, em português nos comentários, adequado ao meu nível de aprendizado.
 7. Ao sugerir uma ferramenta nova, explique como ela se encaixa no perfil de jogador casual.
 8. **Sempre utilizar apenas HTML, CSS e JavaScript**
-
-Não implemente nada sem o meu consentimento, priorize me ensinar caso eu tenha dúvida em algo.
