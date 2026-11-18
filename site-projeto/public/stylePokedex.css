@@ -302,7 +302,7 @@ footer a {
     top: 54.5%;
     right: 27%;
     margin: 0;
-    font-size: clamp(8px, 5vw, 25px);
+    font-size: 1em;
     font-family: 'Oxanium', cursive;
 }
 

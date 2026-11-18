@@ -35,7 +35,7 @@
 
             <section class="tools-content">
     <div class="pokedex-wrapper">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/2.gif" alt="pokemon" class="pokemon__image">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/" alt="pokemon" class="pokemon__image">
 
         <h1 class="pokemon__data">
             <span class="pokemon__number"></span> -
@@ -100,7 +100,13 @@ const renderPokemon = async (pokemon) => {
     pokemonImage.style.display = 'block';
     pokemonName.innerHTML = data.name;
     pokemonNumber.innerHTML = data.id;
-    pokemonImage.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default'];
+
+    const sprites = data.sprites;
+    const animado = sprites.versions['generation-v']['black-white'].animated.front_default;
+    const artwork = sprites.other['official-artwork'].front_default;
+
+    pokemonImage.src = animado || sprites.front_default;
+
     input.value = '';
     searchPokemon = data.id;
   } else {

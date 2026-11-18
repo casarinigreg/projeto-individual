@@ -3,3 +3,7 @@ Foi pedido para a I.A gerar a side-bar de ferramentas
 Foi pedido para a I.A ajustar a lista de canções
 
 Foi pedida a ajuda para entender um bug na header(ela subia mesmo com sticki configurado em CSS)
+
+Ajuda para centralizar a pokedex na section
+
+Ajuda para configurar a pokedex para receber pokemons atualizados
