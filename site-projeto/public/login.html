@@ -102,11 +102,12 @@ function entrar() {
         if (resposta.ok) {
             console.log(resposta);
 
-            resposta.json().then(json => {
+                resposta.json().then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
                 sessionStorage.EMAIL_USUARIO = json.email;
                 sessionStorage.NOME_CLIENTE = json.nome;
+                sessionStorage.ID_USUARIO = json.id;
 
                 setTimeout(function () {
                     window.location = "./ferramentas.html";

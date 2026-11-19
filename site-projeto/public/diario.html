@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Room</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+
+</head>
+
+<body onload="initDiario()">
+    <header>
+        <img src="assets/logo.png" alt="Logo Save Room" id="logoSR">
+        <nav>
+            <a href="index.html" class="navLink">HOME</a>
+            <a href="index.html#sobreMim" class="navLink">SOBRE</a>
+            <a href="conexoes.html" class="navLink">CONEXÕES</a>
+            <a href="#" class="navLink">FERRAMENTAS</a>
+            <a href="login.html" id="loginButton"><b>LOGIN →</b></a>
+        </nav>
+    </header>
+    <main class="ferramentas-main">
+        <div class="tools-page">
+            <aside class="sidebar" aria-label="Navegação de ferramentas">
+                <h3>Ferramentas</h3>
+                <ul class="sidebar-list">
+                    <li><a href="#" class="tool-link">Seu tipo</a></li>
+                    <li><a href="#" class="tool-link">Diário</a></li>
+                    <li><a href="pokedex.html" class="tool-link">Pokedex</a></li>
+                    <li><a href="zelda.html" class="tool-link">Guia de canções (Zelda)</a></li>
+                    
+                </ul>
+            </aside>
+
+            <section class="tools-content">
+                <h2>Diário de Jogos</h2>
+
+                <div id="diario-form">
+                    <label for="jogoInput">Nome do jogo</label>
+                    <input type="text" id="jogoInput" placeholder="Ex: The Legend of Zelda" maxlength="45">
+
+                    <label for="registroInput">Registro</label>
+                    <textarea id="registroInput" rows="6" placeholder="Descreva sua sessão de jogo..."></textarea>
+
+                    <button type="button" id="salvarBtn" onclick="publicarRegistro()">Salvar registro</button>
+                </div>
+
+                <h3>Seus registros</h3>
+                <div id="listaRegistros">
+                    <p id="vazio">Carregando registros...</p>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>Site criado por <a href="https://github.com/casarinigreg" target="_blank">Gregory Casarini</a></p>
+    </footer>
+    <script src="sessao.js"></script>
+    <script>
+        function initDiario() {
+            validarSessao();
+            carregarRegistros();
+        }
+
+        function carregarRegistros() {
+            const idUsuario = sessionStorage.ID_USUARIO;
+            const lista = document.getElementById('listaRegistros');
+            const vazio = document.getElementById('vazio');
+
+            if (!idUsuario) {
+                lista.innerHTML = '<p>Você precisa estar logado para ver seus registros.</p>';
+                return;
+            }
+
+            fetch(`/diario/listar/${idUsuario}`)
+                .then(response => {
+                    if (response.status === 204) return [];
+                    if (!response.ok) throw new Error('Erro ao buscar registros');
+                    return response.json();
+                })
+                .then(json => {
+                    lista.innerHTML = '';
+                    if (!json || json.length === 0) {
+                        lista.innerHTML = '<p>Você ainda não possui registros.</p>';
+                        return;
+                    }
+
+                    json.forEach(item => {
+                        const el = criarElementoRegistro(item);
+                        lista.appendChild(el);
+                    });
+                })
+                .catch(err => {
+                    console.error(err);
+                    lista.innerHTML = '<p>Erro ao carregar registros. Tente novamente mais tarde.</p>';
+                });
+        }
+
+        function publicarRegistro() {
+            const jogo = document.getElementById('jogoInput').value.trim();
+            const registro = document.getElementById('registroInput').value.trim();
+            const idUsuario = sessionStorage.ID_USUARIO;
+
+            if (!idUsuario) {
+                alert('Você precisa estar logado para salvar registros.');
+                return;
+            }
+
+            if (!jogo) {
+                alert('Informe o nome do jogo.');
+                return;
+            }
+
+            if (!registro) {
+                alert('Informe o registro.');
+                return;
+            }
+
+            fetch(`/diario/publicar/${idUsuario}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ jogo: jogo, registro: registro })
+            }).then(response => {
+                if (!response.ok) throw new Error('Erro ao salvar registro');
+                // limpa campos e recarrega
+                document.getElementById('jogoInput').value = '';
+                document.getElementById('registroInput').value = '';
+                carregarRegistros();
+            }).catch(err => {
+                console.error(err);
+                alert('Não foi possível salvar o registro.');
+            });
+        }
+
+        function criarElementoRegistro(item) {
+            const container = document.createElement('div');
+            container.className = 'registro-item';
+
+            const cab = document.createElement('div');
+            cab.className = 'registro-cabecalho';
+            const titulo = document.createElement('strong');
+            titulo.textContent = item.jogo;
+            const data = document.createElement('span');
+            data.className = 'registro-data';
+            // Mostra data/hora formatada se disponível
+            data.textContent = item.dataRegistro ? formatDateTime(item.dataRegistro) : '';
+            // mostra o valor original ao passar o mouse
+            data.title = item.dataRegistro ? String(item.dataRegistro) : '';
+            cab.appendChild(titulo);
+            cab.appendChild(data);
+
+            const texto = document.createElement('div');
+            texto.className = 'registro-texto';
+            texto.textContent = item.registro;
+
+            const botoes = document.createElement('div');
+            botoes.className = 'registro-botoes';
+
+            const editarBtn = document.createElement('button');
+            editarBtn.className = 'btn-editar';
+            editarBtn.textContent = 'Editar';
+            editarBtn.onclick = () => toggleEdicao(item, container, texto);
+
+            botoes.appendChild(editarBtn);
+
+            container.appendChild(cab);
+            container.appendChild(texto);
+            container.appendChild(botoes);
+
+            return container;
+        }
+
+        function toggleEdicao(item, container, textoDiv) {
+            // Se já está em edição, não abrir outra
+            if (container.querySelector('textarea')) return;
+
+            // Esconde o botão de editar enquanto estiver em modo edição
+            const editBtn = container.querySelector('.btn-editar');
+            if (editBtn) editBtn.style.display = 'none';
+
+            const textarea = document.createElement('textarea');
+            textarea.value = item.registro;
+            textarea.rows = 6;
+            textarea.style.width = '100%';
+
+            const salvar = document.createElement('button');
+            salvar.textContent = 'Salvar';
+            salvar.onclick = () => {
+                const novo = textarea.value.trim();
+                if (!novo) { alert('Registro não pode ficar vazio.'); return; }
+                const idUsuario = sessionStorage.ID_USUARIO;
+                fetch(`/diario/editar/${item.idDiario}/${idUsuario}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ registro: novo })
+                }).then(response => {
+                    if (!response.ok) throw new Error('Erro ao editar registro');
+                    carregarRegistros();
+                }).catch(err => {
+                    console.error(err);
+                    alert('Não foi possível editar o registro.');
+                });
+            };
+
+            salvar.className = 'btn-salvar';
+
+            const cancelar = document.createElement('button');
+            cancelar.textContent = 'Cancelar';
+            cancelar.onclick = () => { carregarRegistros(); };
+            cancelar.className = 'btn-cancel';
+
+            // substitui o texto pelo textarea e botões
+            const parent = textoDiv.parentNode;
+            parent.insertBefore(textarea, textoDiv.nextSibling);
+            parent.insertBefore(salvar, textarea.nextSibling);
+            parent.insertBefore(cancelar, salvar.nextSibling);
+        }
+
+        function formatDateTime(dt) {
+            if (!dt) return '';
+            // dt can be a Date object or a string like 'YYYY-MM-DD HH:MM:SS'
+            let d;
+            if (Object.prototype.toString.call(dt) === '[object Date]') {
+                d = dt;
+            } else if (typeof dt === 'string') {
+                // try pattern YYYY-MM-DD HH:MM:SS
+                const match = dt.match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2}):(\d{2})/);
+                if (match) {
+                    const y = parseInt(match[1], 10);
+                    const m = parseInt(match[2], 10) - 1;
+                    const day = parseInt(match[3], 10);
+                    const hh = parseInt(match[4], 10);
+                    const mm = parseInt(match[5], 10);
+                    const ss = parseInt(match[6], 10);
+                    d = new Date(y, m, day, hh, mm, ss);
+                } else {
+                    d = new Date(dt);
+                    if (isNaN(d.getTime())) return dt;
+                }
+            } else {
+                d = new Date(dt);
+                if (isNaN(d.getTime())) return '';
+            }
+
+            const pad = (n) => String(n).padStart(2, '0');
+            return `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+        }
+    </script>
+</body>
+
+</html>

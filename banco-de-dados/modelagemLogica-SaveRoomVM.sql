@@ -5,7 +5,9 @@ use saveRoom;
 create user 'user_saveRoomVM'@'localhost' identified by 'Urubu@100';
 
 -- create user 'user_saveRoom'@'%' identified by 'Urubu@300'; -- comando deve ser copiado na VM
-grant insert, select on savemRoom.* to 'user_saveRoom'@'localhost';
+grant insert, select, update on saveRoom.* to 'user_saveRoom'@'localhost';
+
+grant update on saveRoom.* to 'user_saveRoomVM'@'%';
 
 create table usuario (
 idUsuario INT PRIMARY KEY AUTO_INCREMENT,
@@ -29,7 +31,7 @@ idDiario INT AUTO_INCREMENT,
 fkUsuario INT,
 jogo VARCHAR(45) not null,
 registro TEXT not null,
-dataRegistro DATE not null,
+dataRegistro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY(idDiario, fkUsuario),
 FOREIGN KEY(fkUsuario) REFERENCES usuario(idUsuario)
 );
