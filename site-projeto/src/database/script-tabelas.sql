@@ -68,3 +68,20 @@ alter table usuario add column CPF CHAR(11);
 
 alter table usuario rename column CPF to cpf;
 
+-- Tabela para armazenar o resultado do quiz de estilo de jogo (um resultado por usuário)
+CREATE TABLE IF NOT EXISTS resultadoQuiz (
+    idResultadoQuiz INT PRIMARY KEY AUTO_INCREMENT,
+    fkUsuario INT UNIQUE,
+    terror INT,
+    roguelike INT,
+    acao INT,
+    historia INT,
+    fps INT,
+    rpg INT,
+    puzzle INT,
+    ritmo INT,
+    foco INT,
+    dataResultado DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
+);
+

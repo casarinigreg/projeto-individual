@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Seu Tipo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+    <style>
+        .quiz-container { max-width: 900px; margin: 30px auto; padding: 20px; background: rgba(255,255,255,0.03); border-radius:8px; }
+        .quiz-progress { font-weight:700; margin-bottom:12px; }
+        .quiz-question { font-size:1.2rem; margin-bottom:10px; }
+        .options { display:flex; flex-direction:column; gap:10px; margin-bottom:16px; }
+        .option-label { display:flex; align-items:center; gap:8px; padding:10px; border-radius:6px; cursor:pointer; background:rgba(0,0,0,0.15); }
+        .option-label input { margin-right:8px; }
+        #btnProxima { background:#000000; color:#fff; padding:10px 16px; border:none; border-radius:6px; cursor:pointer; }
+        #btnProxima:hover { background:#222222; }
+    </style>
+</head>
+
+<body onload="validarSessao(); iniciarQuiz();">
+    <header>
+        <img src="assets/logo.png" alt="Logo Save Room" id="logoSR">
+        <nav>
+            <a href="#" class="navLink">HOME</a>
+            <a href="#sobreMim" class="navLink">SOBRE</a>
+            <a href="conexoes.html" class="navLink">CONEXÕES</a>
+            <a href="ferramentas.html" class="navLink">FERRAMENTAS</a>
+            <a href="login.html" id="loginButton"><b>LOGIN →</b></a>
+        </nav>
+    </header>
+
+    <main class="ferramentas-main">
+        <div class="tools-page">
+            <aside class="sidebar" aria-label="Navegação de ferramentas">
+                <h3>Ferramentas</h3>
+                <ul class="sidebar-list">
+                    <li><a href="quiz.html" class="tool-link">Seu tipo</a></li>
+                    <li><a href="diario.html" class="tool-link">Diário</a></li>
+                    <li><a href="pokedex.html" class="tool-link">Pokedex</a></li>
+                    <li><a href="zelda.html" class="tool-link">Guia de canções (Zelda)</a></li>
+                </ul>
+            </aside>
+
+            <section class="tools-content">
+                <section class="quiz-container">
+                    <div id="quizRoot">
+                        <div class="quiz-progress" id="progress">Pergunta 1 de 12</div>
+                        <div class="quiz-question" id="question"> ... </div>
+                        <form id="optionsForm" class="options"></form>
+                        <button id="btnProxima" onclick="proximaPergunta(event)">Próxima</button>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>Site criado por <a href="https://github.com/casarinigreg" target="_blank">Gregory Casarini</a></p>
+    </footer>
+
+    <script src="sessao.js"></script>
+    <script src="js/quiz.js" defer></script>
+</body>
+
+</html>

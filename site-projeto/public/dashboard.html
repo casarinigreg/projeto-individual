@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Seu Tipo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleDashboard.css">
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* pequenas adaptações responsivas */
+        .kpi-row { display:flex; gap:16px; margin:20px 0; }
+        @media (max-width:900px) { .kpi-row { flex-direction:column; } }
+    </style>
+</head>
+
+<body onload="validarSessao(); carregarDashboard();">
+    <header>
+        <img src="assets/logo.png" alt="Logo Save Room" id="logoSR">
+        <nav>
+            <a href="#" class="navLink">HOME</a>
+            <a href="#sobreMim" class="navLink">SOBRE</a>
+            <a href="conexoes.html" class="navLink">CONEXÕES</a>
+            <a href="ferramentas.html" class="navLink">FERRAMENTAS</a>
+            <a href="login.html" id="loginButton"><b>LOGIN →</b></a>
+        </nav>
+    </header>
+
+    <main class="dashboard-main ferramentas-main">
+        <div class="tools-page">
+            <aside class="sidebar" aria-label="Navegação de ferramentas">
+                <h3>Ferramentas</h3>
+                <ul class="sidebar-list">
+                    <li><a href="quiz.html" class="tool-link">Seu tipo</a></li>
+                    <li><a href="diario.html" class="tool-link">Diário</a></li>
+                    <li><a href="pokedex.html" class="tool-link">Pokedex</a></li>
+                    <li><a href="zelda.html" class="tool-link">Guia de canções (Zelda)</a></li>
+                </ul>
+            </aside>
+
+            <section class="tools-content">
+                <section class="container">
+                    <div class="kpi-row">
+                        <div class="kpi-card" id="kpi-principal">
+                            <h3>Estilo principal</h3>
+                            <div class="kpi-value" id="principal-nome">—</div>
+                            <div id="principal-frase" class="kpi-frase">—</div>
+                        </div>
+                        <div class="kpi-card" id="kpi-segundo">
+                            <h3>Segundo estilo</h3>
+                            <div class="kpi-value" id="segundo-nome">—</div>
+                            <div id="segundo-frase" class="kpi-frase">—</div>
+                        </div>
+                        <div class="kpi-card" id="kpi-lista">
+                            <h3>Estilos analisados</h3>
+                            <div class="kpi-value">7 estilos</div>
+                            <ul id="lista-estilos"></ul>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <div class="col-left">
+                            <div class="small-card">
+                                <h4>Ritmo de jogo</h4>
+                                <div class="progress-labels"><span>Calmo</span><span>Frenético</span></div>
+                                <div class="progress-bar"><div id="ritmo-bar" class="progress-fill"></div></div>
+                                <div id="ritmo-valor" class="progress-number">0</div>
+                            </div>
+
+                            <div class="small-card">
+                                <h4>Foco em história</h4>
+                                <div class="progress-labels"><span>Só jogabilidade</span><span>Só narrativa</span></div>
+                                <div class="progress-bar"><div id="foco-bar" class="progress-fill"></div></div>
+                                <div id="foco-valor" class="progress-number">0</div>
+                            </div>
+                        </div>
+
+                        <div class="col-right">
+                            <div class="chart-card">
+                                <h4>Compatibilidade por estilo de jogo</h4>
+                                <canvas id="chartCompatibilidade"></canvas>
+                            </div>
+
+                            <div class="reco-card">
+                                <h4>Recomendações para você</h4>
+                                <div class="reco-grid" id="recoGrid"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>Site criado por <a href="https://github.com/casarinigreg" target="_blank">Gregory Casarini</a></p>
+    </footer>
+
+    <script src="sessao.js"></script>
+    <script src="js/dashboard.js" defer></script>
+</body>
+
+</html>
