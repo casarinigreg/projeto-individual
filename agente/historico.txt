@@ -7,3 +7,5 @@ Foi pedida a ajuda para entender um bug na header(ela subia mesmo com sticki con
 Ajuda para centralizar a pokedex na section
 
 Ajuda para configurar a pokedex para receber pokemons atualizados
+
+Ajuda na criação da página de diário
