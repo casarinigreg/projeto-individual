@@ -39,7 +39,7 @@ async function carregarDashboard() {
 function mostrarSemResultado() {
     const container = document.querySelector('.container');
     container.innerHTML = `
-        <div style="padding:24px;background:rgba(255,255,255,0.03);border-radius:8px;">
+        <div style="padding:24px;background:rgba(255,255,255,0.06);border-radius:8px;">
             <h2>Ainda não há resultado</h2>
             <p>Parece que você ainda não fez o quiz. <a href="quiz.html">Clique aqui para descobrir seu tipo</a> — é rápido e divertido.</p>
         </div>
@@ -139,11 +139,11 @@ function recomendacoesBasicas() {
     // Recomendações iniciais. Mostro aqui para você aprovar as escolhas dos estilos que não foram especificados.
     return {
         'Terror': [ { titulo: 'Resident Evil 4', desc: 'Survival clássico, atmosfera tensa.' }, { titulo: 'Silent Hill 2', desc: 'Terror psicológico e narrativa perturbadora.' } ],
-        'Roguelike': [ { titulo: 'Hades', desc: 'Runs intensas com progressão persistente.' }, { titulo: 'The Binding of Isaac', desc: 'Action roguelike com grandes variações.' } ],
+        'Roguelike': [  { titulo: 'The Binding of Isaac', desc: 'Action roguelike com grandes variações.' }, { titulo: 'Hades', desc: 'Runs intensas com progressão persistente.' } ],
         'Ação': [ { titulo: 'Devil May Cry 5', desc: 'Combates estilizados e frenéticos.' } ],
-        'História': [ { titulo: 'Life Is Strange', desc: 'Narrativa episódica e escolhas emocionais.' }, { titulo: 'To the Moon', desc: 'Foco em história e emoção.' } ],
+        'História': [ { titulo: 'Life Is Strange', desc: 'Narrativa episódica e escolhas emocionais.' }, { titulo: 'The Walking Dead: Telltale Series', desc: 'Foco em história e emoção em um mundo pós-apocaliptico.' } ],
         'FPS': [ { titulo: 'Half-Life 2', desc: 'Clássico de narrativa e ação em primeira pessoa.' }, { titulo: 'DOOM (2016)', desc: 'Ação acelerada e intenso ritmo.' } ],
         'RPG': [ { titulo: 'The Witcher 3', desc: 'Mundo vasto e narrativa profunda.' }, { titulo: 'Skyrim', desc: 'Exploração e construção de personagem.' } ],
-        'Puzzle': [ { titulo: 'Portal 2', desc: 'Quebra-cabeças inteligentes com humor.' }, { titulo: 'Braid', desc: 'Puzzles com design artístico e narrativo.' } ]
+        'Puzzle': [ { titulo: 'Portal 2', desc: 'Quebra-cabeças inteligentes com humor.' }, { titulo: 'Untitled Goose Game', desc: 'Puzzles baseados em atazanar moradores apenas sendo um ganso' } ]
     };
 }
