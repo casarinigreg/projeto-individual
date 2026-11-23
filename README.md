@@ -2,7 +2,7 @@
 
 <h1><a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=F7F7F7&width=435&lines=%F0%9D%84%83%F0%9D%84%83%F0%9D%84%82%F0%9D%84%82%F0%9D%84%80%F0%9D%84%81%F0%9D%84%83%F0%9D%84%82%F0%9D%84%82%F0%9D%84%83+BEM+VINDO+AO+OLD+BLOOD!+%F0%9D%84%83%F0%9D%84%83%F0%9D%84%82%F0%9D%84%82%F0%9D%84%80%F0%9D%84%81%F0%9D%84%83%F0%9D%84%82%F0%9D%84%82%F0%9D%84%83" alt="Typing SVG" /></a></h1>
 
-<img src="logo.png" alt="Logo do Old Blood" style="height: 200px">
+<img src="logo.png" alt="Logo do Old Blood" style="height: 150px">
 
 </div>
 
