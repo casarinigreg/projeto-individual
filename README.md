@@ -35,12 +35,12 @@ O site funciona como um centro de ferramentas de uso pessoal: o usuário cria a 
 <div>
   <h1 align="center">Como usar</h1>
   <p>
-  1. Clonar o repositório em um local de sua preferência.
-  2. Abrir o repositório do projeto no VS Code ou seguir o caminho para a pasta /site-projeto dentro do repositório dentro da Central de Comandos(CMD) e executar o comando ‘npm install’.
-  3. Após a instalação das bibliotecas necessárias, partiremos para o banco de dados. Abra o arquivo banco-de-dados/modelagemLogica-SaveRoom.sql no App MySQL.
-  4. Dentro do arquivo modelagemLogica-SaveRoom.sql, execute os comandos para criar as tabelas existentes.
-  5. Com as tabelas criadas, volte para o VS Code ou para a Central de Comandos e execute o comando npm start.
-  6. Entre no link gerado no seu seu terminal e desfrute das funcionalidades do site!
+  1. Clonar o repositório em um local de sua preferência.<br>
+  2. Abrir o repositório do projeto no VS Code ou seguir o caminho para a pasta /site-projeto dentro do repositório dentro da Central de Comandos(CMD) e executar o comando ‘npm install’.<br>
+  3. Após a instalação das bibliotecas necessárias, partiremos para o banco de dados. Abra o arquivo banco-de-dados/modelagemLogica-SaveRoom.sql no App MySQL.<br>
+  4. Dentro do arquivo modelagemLogica-SaveRoom.sql, execute os comandos para criar as tabelas existentes.<br>
+  5. Com as tabelas criadas, volte para o VS Code ou para a Central de Comandos e execute o comando npm start.<br>
+  6. Entre no link gerado no seu seu terminal e desfrute das funcionalidades do site!<br>
   </p>
 </div>
 
