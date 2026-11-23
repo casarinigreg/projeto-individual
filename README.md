@@ -29,7 +29,7 @@ O site funciona como um centro de ferramentas de uso pessoal: o usuário cria a 
 
 <div>
   <h1>Tecnologias usadas</h1>
-  <img src="https://skillicons.dev/icons?i=vscode,html,css,js,nodejs" />
+  <img src="https://skillicons.dev/icons?i=vscode,html,css,js,nodejs,linux,sql" />
 </div>
 
 <div>
