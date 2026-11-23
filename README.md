@@ -26,6 +26,12 @@ Atualmente, é comum ter os jogos espalhados por plataformas diversas e lojas di
 O site funciona como um centro de ferramentas de uso pessoal: o usuário cria a sua conta e tem acesso a ferramentas para usar em seus jogos favoritos.
   </p>
 </div>
+
+<div>
+  <h1>Tecnologias usadas</h1>
+  <img src="https://skillicons.dev/icons?i=vscode,html,css,js,nodejs" />
+</div>
+
 <div>
   <h1 align="center">Como usar</h1>
   <p>
