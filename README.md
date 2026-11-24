@@ -2,6 +2,8 @@
 
 <h1><a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=F7F7F7&width=435&lines=%F0%9D%84%83%F0%9D%84%83%F0%9D%84%82%F0%9D%84%82%F0%9D%84%80%F0%9D%84%81%F0%9D%84%83%F0%9D%84%82%F0%9D%84%82%F0%9D%84%83+BEM+VINDO+AO+OLD+BLOOD!+%F0%9D%84%83%F0%9D%84%83%F0%9D%84%82%F0%9D%84%82%F0%9D%84%80%F0%9D%84%81%F0%9D%84%83%F0%9D%84%82%F0%9D%84%82%F0%9D%84%83" alt="Typing SVG" /></a></h1>
 
+<img src="logo.png" alt="Logo do Old Blood" style="height: 150px">
+
 </div>
 
 <div>
@@ -24,15 +26,21 @@ Atualmente, é comum ter os jogos espalhados por plataformas diversas e lojas di
 O site funciona como um centro de ferramentas de uso pessoal: o usuário cria a sua conta e tem acesso a ferramentas para usar em seus jogos favoritos.
   </p>
 </div>
+
+<div>
+  <h1>Tecnologias usadas</h1>
+  <img src="https://skillicons.dev/icons?i=vscode,html,css,js,nodejs,linux,sql" />
+</div>
+
 <div>
   <h1 align="center">Como usar</h1>
   <p>
-  1. Clonar o repositório em um local de sua preferência.
-  2. Abrir o repositório do projeto no VS Code ou seguir o caminho para a pasta /site-projeto dentro do repositório dentro da Central de Comandos(CMD) e executar o comando ‘npm install’.
-  3. Após a instalação das bibliotecas necessárias, partiremos para o banco de dados. Abra o arquivo banco-de-dados/modelagemLogica-SaveRoom.sql no App MySQL.
-  4. Dentro do arquivo modelagemLogica-SaveRoom.sql, execute os comandos para criar as tabelas existentes.
-  5. Com as tabelas criadas, volte para o VS Code ou para a Central de Comandos e execute o comando npm start.
-  6. Entre no link gerado no seu seu terminal e desfrute das funcionalidades do site!
+  1. Clonar o repositório em um local de sua preferência.<br>
+  2. Abrir o repositório do projeto no VS Code ou seguir o caminho para a pasta /site-projeto dentro do repositório dentro da Central de Comandos(CMD) e executar o comando ‘npm install’.<br>
+  3. Após a instalação das bibliotecas necessárias, partiremos para o banco de dados. Abra o arquivo banco-de-dados/modelagemLogica-SaveRoom.sql no App MySQL.<br>
+  4. Dentro do arquivo modelagemLogica-SaveRoom.sql, execute os comandos para criar as tabelas existentes.<br>
+  5. Com as tabelas criadas, volte para o VS Code ou para a Central de Comandos e execute o comando npm start.<br>
+  6. Entre no link gerado no seu seu terminal e desfrute das funcionalidades do site!<br>
   </p>
 </div>
 
