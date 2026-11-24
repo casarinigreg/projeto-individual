@@ -11,3 +11,5 @@ Ajuda para configurar a pokedex para receber pokemons atualizados.
 Ajuda na criação da página de diário.
 
 Criação do quiz e da dashboard, trabalhando na montagem do style e na montagem do quiz.
+
+ajustes no sobre mim.
