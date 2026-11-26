@@ -4,7 +4,6 @@ use saveRoom;
 
 create user 'user_saveRoomVM'@'%' identified by 'Urubu@100';
 
--- create user 'user_saveRoomVM'@'%' identified by 'Urubu@300'; -- comando deve ser copiado na VM
 grant insert, select, update on saveRoom.* to 'user_saveRoomVM'@'%';
 
 grant update on saveRoom.* to 'user_saveRoomVM'@'%';
