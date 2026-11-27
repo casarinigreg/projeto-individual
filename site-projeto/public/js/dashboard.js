@@ -1,5 +1,4 @@
-// dashboard.js
-// Busca o resultado do usuário e monta KPIs, gráfico e recomendações
+
 
 const styleDisplay = ['Terror','Roguelike','Ação','História','FPS','RPG','Puzzle'];
 const styleKeyMap = {
@@ -47,11 +46,9 @@ function mostrarSemResultado() {
 }
 
 function montarDashboard(resultado) {
-    // monta array ordenado de estilos
     const estilos = styleDisplay.map(name => ({ name, value: Number(resultado[ styleKeyMap[name] ] || 0) }));
     estilos.sort((a,b) => b.value - a.value);
 
-    // KPIs
     const principal = estilos[0];
     const segundo = estilos[1];
     document.getElementById('principal-nome').textContent = `${principal.name} — ${principal.value}%`;
@@ -59,12 +56,10 @@ function montarDashboard(resultado) {
     document.getElementById('segundo-nome').textContent = `${segundo.name} — ${segundo.value}%`;
     document.getElementById('segundo-frase').textContent = frasePorEstilo(segundo.name);
 
-    // lista de estilos
     const ul = document.getElementById('lista-estilos');
     ul.innerHTML = '';
     styleDisplay.forEach(s => { const li = document.createElement('li'); li.textContent = s; ul.appendChild(li); });
 
-    // Ritmo e foco
     const ritmo = Number(resultado.ritmo || 0);
     const foco = Number(resultado.foco || 0);
     document.getElementById('ritmo-bar').style.width = ritmo + '%';
@@ -72,7 +67,6 @@ function montarDashboard(resultado) {
     document.getElementById('foco-bar').style.width = foco + '%';
     document.getElementById('foco-valor').textContent = foco;
 
-    // Gráfico
     const labels = estilos.map(e => e.name);
     const data = estilos.map(e => e.value);
 
@@ -94,18 +88,14 @@ function montarDashboard(resultado) {
         }
     });
 
-    // Recomendações (4 cards: 2 do principal, 1 do segundo, 1 do terceiro)
     const reco = recomendacoesBasicas();
     const escolhidos = [];
     const prim = estilos[0].name;
     const seg = estilos[1].name;
     const ter = estilos[2].name;
 
-    // pega até 2 do principal
     (reco[prim] || []).slice(0,2).forEach(r => escolhidos.push({ estilo: prim, jogo: r.titulo, desc: r.desc }));
-    // 1 do segundo
     (reco[seg] || []).slice(0,1).forEach(r => escolhidos.push({ estilo: seg, jogo: r.titulo, desc: r.desc }));
-    // 1 do terceiro
     (reco[ter] || []).slice(0,1).forEach(r => escolhidos.push({ estilo: ter, jogo: r.titulo, desc: r.desc }));
 
     const grid = document.getElementById('recoGrid');
@@ -136,7 +126,6 @@ function frasePorEstilo(estilo) {
 }
 
 function recomendacoesBasicas() {
-    // Recomendações iniciais. Mostro aqui para você aprovar as escolhas dos estilos que não foram especificados.
     return {
         'Terror': [ { titulo: 'Resident Evil 4', desc: 'Survival clássico, atmosfera tensa.' }, { titulo: 'Silent Hill 2', desc: 'Terror psicológico e narrativa perturbadora.' } ],
         'Roguelike': [  { titulo: 'The Binding of Isaac', desc: 'Action roguelike com grandes variações.' }, { titulo: 'Hades', desc: 'Runs intensas com progressão persistente.' } ],

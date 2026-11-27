@@ -17,7 +17,6 @@ function salvarResultado(req, res) {
         return;
     }
 
-    // Simples validação de campos numéricos
     try {
         quizModel.salvarOuAtualizar(idUsuario, terror, roguelike, acao, historia, fps, rpg, puzzle, ritmo, foco)
             .then(function(resultado) {

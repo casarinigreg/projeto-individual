@@ -1,5 +1,4 @@
-// quiz.js
-// Perguntas, lógica de pontuação e envio para o back-end
+
 
 const styles = ["Terror", "Roguelike", "Ação", "História", "FPS", "RPG", "Puzzle"];
 
@@ -104,7 +103,6 @@ const questions = [
             { text: "Construir personagens e evoluir", points: { RPG: 3 } }
         ]
     },
-    // pergunta 11 - Ritmo
     {
         question: "Como você descreve seu ritmo de jogo ideal?",
         type: "ritmo",
@@ -115,7 +113,6 @@ const questions = [
             { text: "Frenético, sem parar", ritmo: 100 }
         ]
     },
-    // pergunta 12 - Foco em história
     {
         question: "O quanto a narrativa importa pra você?",
         type: "foco",
@@ -144,17 +141,14 @@ const styleKeyMap = {
 };
 
 function iniciarQuiz() {
-    // se não estiver logado, avisa e redireciona
     if (!sessionStorage.ID_USUARIO) {
         alert('Você precisa estar logado para fazer o quiz. Será redirecionado para o login.');
         window.location.href = 'login.html';
         return;
     }
 
-    // inicializa contadores
     styles.forEach(s => { stylePoints[s] = 0; maxPerStyle[s] = 0; });
 
-    // calcula máximo possível por estilo (soma do maior valor por pergunta)
     questions.forEach(q => {
         if (q.type !== 'style') return;
         styles.forEach(s => {
@@ -211,7 +205,6 @@ function proximaPergunta(e) {
     const escolha = q.options[Number(seleção.value)];
 
     if (q.type === 'style') {
-        // soma pontos por estilo
         if (escolha.points) {
             Object.keys(escolha.points).forEach(s => {
                 if (!stylePoints[s]) stylePoints[s] = 0;
@@ -233,7 +226,6 @@ function proximaPergunta(e) {
 }
 
 function finalizarQuiz() {
-    // calcula percentuais por estilo
     const resultados = {};
     styles.forEach(s => {
         const obtido = stylePoints[s] || 0;
@@ -242,7 +234,6 @@ function finalizarQuiz() {
         resultados[key] = max > 0 ? Math.round((obtido / max) * 100) : 0;
     });
 
-    // prepara payload
     const payload = {
         idUsuario: sessionStorage.ID_USUARIO,
         terror: resultados['terror'],
@@ -256,14 +247,12 @@ function finalizarQuiz() {
         foco: Math.round(foco)
     };
 
-    // enviar para o back-end
     fetch('/quiz/salvar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     }).then(res => {
         if (res.ok) {
-            // redireciona ao dashboard quando salvo
             window.location.href = 'dashboard.html';
         } else {
             res.text().then(txt => { alert('Erro ao salvar resultado: ' + txt); });

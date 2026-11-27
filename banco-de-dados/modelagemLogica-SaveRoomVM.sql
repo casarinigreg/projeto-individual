@@ -52,13 +52,27 @@ CREATE TABLE resultadoQuiz (
     dataResultado DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
 );
-
--- select dos registros em diário para visualização no site
-
-SELECT idDiario, fkUsuario, jogo, registro, dataRegistro
-        FROM diarioJogos
-        WHERE fkUsuario = 1;
         
-        
-truncate diarioJogos;
 
+-- selec dos registros por usuario
+SELECT u.nickname, d.jogo, d.registro, d.dataRegistro
+FROM diarioJogos d
+JOIN usuario u ON u.idUsuario = d.fkUsuario
+WHERE u.idUsuario = 1
+ORDER BY d.dataRegistro DESC;    
+
+-- ultima tentativa do quiz por usuario
+
+SELECT u.nickname, r.terror, r.roguelike, r.acao, r.historia,
+       r.fps, r.rpg, r.puzzle, r.ritmo, r.foco, r.dataResultado
+FROM resultadoQuiz r
+JOIN usuario u ON u.idUsuario = r.fkUsuario
+WHERE u.idUsuario = 1;
+
+-- quantidade de registros de cada usuario
+
+SELECT u.nickname, COUNT(d.idDiario) AS totalRegistros
+FROM usuario u
+LEFT JOIN diarioJogos d ON d.fkUsuario = u.idUsuario
+GROUP BY u.idUsuario, u.nickname
+ORDER BY totalRegistros DESC;

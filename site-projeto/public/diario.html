@@ -144,9 +144,9 @@
             titulo.textContent = item.jogo;
             const data = document.createElement('span');
             data.className = 'registro-data';
-            // Mostra data/hora formatada se disponível
+
             data.textContent = item.dataRegistro ? formatDateTime(item.dataRegistro) : '';
-            // mostra o valor original ao passar o mouse
+
             data.title = item.dataRegistro ? String(item.dataRegistro) : '';
             cab.appendChild(titulo);
             cab.appendChild(data);
@@ -173,10 +173,9 @@
         }
 
         function toggleEdicao(item, container, textoDiv) {
-            // Se já está em edição, não abrir outra
+
             if (container.querySelector('textarea')) return;
 
-            // Esconde o botão de editar enquanto estiver em modo edição
             const editBtn = container.querySelector('.btn-editar');
             if (editBtn) editBtn.style.display = 'none';
 
@@ -211,7 +210,6 @@
             cancelar.onclick = () => { carregarRegistros(); };
             cancelar.className = 'btn-cancel';
 
-            // substitui o texto pelo textarea e botões
             const parent = textoDiv.parentNode;
             parent.insertBefore(textarea, textoDiv.nextSibling);
             parent.insertBefore(salvar, textarea.nextSibling);
@@ -220,12 +218,12 @@
 
         function formatDateTime(dt) {
             if (!dt) return '';
-            // dt can be a Date object or a string like 'YYYY-MM-DD HH:MM:SS'
+
             let d;
             if (Object.prototype.toString.call(dt) === '[object Date]') {
                 d = dt;
             } else if (typeof dt === 'string') {
-                // try pattern YYYY-MM-DD HH:MM:SS
+
                 const match = dt.match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2}):(\d{2})/);
                 if (match) {
                     const y = parseInt(match[1], 10);
